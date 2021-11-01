@@ -1,4 +1,4 @@
 # tfg
-Projeto final de graduação do curso de Ciência da Computação da Universidade Franciscana.
+Final undergraduation project of the Computer Science course at Universidade Franciscana.
 
-Sistema Online Python-Django com tratamento de vídeos (rastreamento) por OpenCV.
+Python-Django Online System with video processing (object tracking) by OpenCV.
