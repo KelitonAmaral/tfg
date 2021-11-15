@@ -1,0 +1,28 @@
+{% extends "mail_templated/base.tpl" %}
+{% load bootstrap3 %}
+
+{% block subject %}
+    TFG Online: {{ submissao.aluno.nome }} fez envio de arquivo da REBANCA!!
+{% endblock %}
+
+{% block html %}
+    <p>Olá professores avaliadores {{ submissao.avaliacao.avaliador_responsavel.get_first_name|title }} e
+        {{ submissao.avaliacao.avaliador_suplente.get_first_name|title }}. 
+        {% if submissao.avaliacao.avaliador_convidado %}
+            Em especial, o professor convidado {{ submissao.avaliacao.avaliador_convidado.get_first_name|title }}
+        {% endif %}
+
+        <br><br>
+
+       O aluno {{ submissao.aluno.nome|title }} enviou o arquivo para REBANCA. <br><br>
+       
+       Para dar continuidade ao processo, acesse o <a href="https://tfgonline.lapinf.ufn.edu.br" target="_blank"> TFG Online</a>
+    </p>
+    <br>
+    <p>***** MENSAGEM GERADA AUTOMATICAMENTE. NÃO RESPONDA. *****</p>
+    <hr>
+    <p><small>Desenvolvido pelo Laboratório de Práticas da Computação UFN</small></p>
+{% endblock %}
+
+
+

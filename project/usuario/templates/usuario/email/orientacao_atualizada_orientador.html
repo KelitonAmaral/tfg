@@ -1,0 +1,22 @@
+{% extends "mail_templated/base.tpl" %}
+{% load bootstrap3 %}
+
+{% block subject %}
+    TFG Online: {{ orientacao.submissao.aluno.nome }} criou ou atualizou ata de reunião de orientação!!
+{% endblock %}
+
+{% block html %}
+    <p>Olá professor <strong>{{ orientacao.submissao.orientador.nome }}</strong>!!<br><br>
+
+       Seu orientando {{ orientacao.submissao.aluno.nome }} atualizou alguma ata de orientação semanal. <br>
+       Para acompanhar essa alteração de ata, acesse o <a href="https://tfgonline.lapinf.ufn.edu.br" target="_blank">
+       TFG Online</a>
+    </p>
+    <br>
+    <p>***** MENSAGEM GERADA AUTOMATICAMENTE. NÃO RESPONDA. *****</p>
+    <hr>
+    <p><small>Desenvolvido pelo Laboratório de Práticas da Computação UFN</small></p>
+{% endblock %}
+
+
+
