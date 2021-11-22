@@ -2,27 +2,28 @@
 {% load bootstrap3 %}
 
 {% block title %}
-	{% bootstrap_icon 'user' %} <span class="label label-info">All</span> Users
+	{% bootstrap_icon 'user' %} <span class="label label-info">ALL</span> Users
 {% endblock %}
 
 {% block content %}
+<br>
 <div class="panel panel-default">
 	<div class="panel-body">
 	  <form class="form">
 		  <div class="row">
 			  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				  
+				{% bootstrap_field form.name  %}
 			  </div>
 			  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				  
+				{% bootstrap_field form.type  %}
 			  </div>
 			  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 				  <br>
-				  <button type="submit" class="btn btn-success btn-lg"  style="width: 100%;">{% bootstrap_icon 'search' %} Buscar</button>
+				  <button type="submit" class="btn btn-success btn-lg"  style="width: 100%;">{% bootstrap_icon 'search' %} Search</button>
 			  </div>
 			  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 				  <br>
-				  <a href="" style="width: 100%;" class="btn btn-md btn-primary btn-lg">{% bootstrap_icon 'floppy-disk' %} Cadastrar usuário</a>
+				  <a href="{% url 'users_create' %}" style="width: 100%;" class="btn btn-md btn-primary btn-lg">{% bootstrap_icon 'floppy-disk' %} Register user</a>
 			  </div>
 		  </div>
 	  </form>

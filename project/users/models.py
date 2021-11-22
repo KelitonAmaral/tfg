@@ -53,8 +53,8 @@ class User(AbstractBaseUser):
     name = models.CharField(_('Name *'), max_length=100)
     email = models.EmailField(_('Email'), unique=True, max_length=100, db_index=True)
     cpf = models.CharField(_('CPF *'),max_length=14,help_text='ATENTION: just numbers')
-    phone = models.CharField(_('Cellphone *'),max_length=14, help_text='ATENTION: just numbers') 
-    birth_date = models.DateField(_('Date of birth *'), help_text='dd/mm/aaaa')       
+    phone = models.CharField(_('Cell phone *'),max_length=14, help_text='ATENTION: just numbers') 
+    birth_date = models.DateField(_('Date of birth *'), help_text='dd/mm/yyyy')       
     gender = models.CharField(_('Gender *'), max_length=10, choices=TYPE_GENDER) 
     
     is_active = models.BooleanField(_('Active'), default=False, help_text='If active, the user has permission to access the system')

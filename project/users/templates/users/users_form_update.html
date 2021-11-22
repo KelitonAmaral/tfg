@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block title %}
-{% bootstrap_icon 'user' %} Atualiza Usuário
+{% bootstrap_icon 'user' %} Update User
 {% endblock %}
 
 {% block content %}
@@ -17,19 +17,19 @@
   {% bootstrap_form form %}
   {%endcomment%}
 
-  {% bootstrap_field form.tipo %}
-  {% bootstrap_field form.nome %}
-  {% bootstrap_field form.curso %}
-  {% bootstrap_field form.matricula %}
+  {% bootstrap_field form.type %}
+  {% bootstrap_field form.name %}
+  {% bootstrap_field form.gender %}
+  {% bootstrap_field form.birth_date %}
+  {% bootstrap_field form.cpf|add_class:'mask_cpf' %}   
+  {% bootstrap_field form.phone|add_class:'mask_tel_celular' %}   
+  {% bootstrap_field form.regulatory_agency_registration %} 
+  {% bootstrap_field form.is_active %}
+
   {% bootstrap_field form.email %}
 
-  {% bootstrap_field form.cpf|add_class:'mask_cpf' %} 
-  {% bootstrap_field form.fone|add_class:'mask_tel_celular' %}   
-  
-  {% bootstrap_field form.is_active %}
-  
-  {% buttons submit='Gravar' %}
-  <a href="javascript:history.go(-1);" class="btn btn-info" role="button">Voltar</a>
+  {% buttons submit='Save' %}
+  <a href="javascript:history.go(-1);" class="btn btn-info" role="button">Back</a>
   {% endbuttons %}
 </form>
 

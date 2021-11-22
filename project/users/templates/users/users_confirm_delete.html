@@ -2,15 +2,15 @@
 {% load bootstrap3 %}
 
 {% block title %}
-  Confirmação de exclusão
+Delete Confirmation
 {% endblock %}
 
 {% block content %}
 <form action="" method="post">
   {% csrf_token %}
-  <p>Você tem certeza que deseja excluir "{{ object }}"?</p>
-  {% buttons submit='Confirmar' %}
-    {% bootstrap_button content='Cancelar' href="javascript:history.go(-1);" button_type='link' button_class='btn btn-default' size='md' %}
+  <p>Are you sure you want to delete "{{ object }}"?</p>
+  {% buttons submit='Yes' %}
+    {% bootstrap_button content='No' href="javascript:history.go(-1);" button_type='link' button_class='btn btn-default' size='md' %}
   {% endbuttons %}
 </form>
 {% endblock %}

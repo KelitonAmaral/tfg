@@ -12,48 +12,49 @@ from mail_templated import EmailMessage
 from utils.decorators import LoginRequiredMixin, StaffRequiredMixin
 
 from .models import User
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, SearchUserForm
 
 
 class UserListView(LoginRequiredMixin, ListView):
     model = User
     template_name = 'users/users_list.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     if self.request.GET:
-    #         #quando ja tem dado filtrando
-    #         context['form'] = SearchUserForm(data=self.request.GET)
-    #     else:
-    #         #quando acessa sem dado filtrando
-    #         context['form'] = SearchUserForm()
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.GET:
+            #quando ja tem dado filtrando
+            context['form'] = SearchUserForm(data=self.request.GET)
+        else:
+            #quando acessa sem dado filtrando
+            context['form'] = SearchUserForm()
+        return context
 
-    # def get_queryset(self):
-    #     qs = User.objects.all()
+    def get_queryset(self):
+        qs = User.objects.all()
 
-    #     if self.request.GET:
-    #         #quando ja tem dado filtrando
-    #         form = SearchUserForm(data=self.request.GET)
-    #     else:
-    #         #quando acessa sem dado filtrando
-    #         form = SearchUserForm()
+        if self.request.GET:
+            #quando ja tem dado filtrando
+            form = SearchUserForm(data=self.request.GET)
+        else:
+            #quando acessa sem dado filtrando
+            form = SearchUserForm()
 
-    #     if form.is_valid():
-    #         name = form.cleaned_data.get('name')
-    #         type = form.cleaned_data.get('type')
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            type = form.cleaned_data.get('type')
 
-    #         if name:
-    #             qs = qs.filter(name__icontains=name)
+            if name:
+                qs = qs.filter(name__icontains=name)
 
-    #         if type:
-    #             qs = qs.filter(type=type)
-    #     return qs
+            if type:
+                qs = qs.filter(type=type)
+        return qs
     
     
-class UserCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
+class UserCreateView(LoginRequiredMixin,  CreateView):
     model = User
     fields = ['type', 'name', 'email', 'password', 'cpf', 'phone', 'birth_date', 'gender', 'is_active']
+    # template_name = 'users/users_form.html'
     success_url = 'users_list'
     
     def get_success_url(self):
@@ -61,10 +62,10 @@ class UserCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
         return reverse(self.success_url)
 
 
-class UserUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     fields = ['type', 'name', 'email', 'cpf', 'phone', 'birth_date', 'gender', 'is_active']
-    # template_name = 'users/user_form_update.html'
+    # template_name = 'users/users_form_update.html'
     success_url = 'users_list'
     
     def get_success_url(self):

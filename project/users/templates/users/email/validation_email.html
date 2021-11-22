@@ -1,0 +1,23 @@
+{% extends "mail_templated/base.tpl" %}
+{% load bootstrap3 %}
+
+{% block subject %}
+    {{ user.name }}, welcome to the OLY System. Validate your registration!
+{% endblock %}
+
+{% block html %}
+    <br>
+    <h2>Welcome to the OLY System</h2>
+    <p>{{ user.name }}!! <br><br>
+        
+        Before using the system, you need to enable your account.
+    
+    </p><br>
+        
+    <p>Click <a href='{{ user.get_user_register_activate_url }}'>here</a> to proceed with account activation.</a> </p>
+    
+    <p>***** AUTOMATICALLY GENERATED MESSAGE. DO NOT ANSWER. *****</p>
+    <br>
+    <hr>
+    <p><small>System developed by Keliton Amaral and Alexandre Zamberlan.</small></p>
+{% endblock %}
