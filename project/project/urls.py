@@ -19,7 +19,7 @@ urlpatterns = [
     # url(r'documento/', include('documento.urls')),
     # url(r'submissao/', include('submissao.urls')),
     # url(r'turma/', include('turma.urls')),
-    # url(r'usuario/', include('usuario.urls')),
+    url(r'users/', include('users.urls')),
    
     url(r'^accounts/', include('django.contrib.auth.urls')),
     # url(r'', include('landpage.urls')),

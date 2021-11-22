@@ -14,13 +14,13 @@ class UserRegisterForm(forms.ModelForm):
         ('MALE', 'Male'),
     )
    
-    type = forms.CharField(_('User type *'), max_length=13, choices=TYPES_USERS, default='GUEST', help_text='* Required fields')
-    name = forms.CharField(_('Name *'), max_length=100)
-    email = forms.EmailField(_('Email'), unique=True, max_length=100, db_index=True)
-    cpf = forms.CharField(_('CPF *'),max_length=14,help_text='ATENTION: just numbers')
-    phone = forms.CharField(_('Cellphone *'),max_length=14, help_text='ATENTION: just numbers') 
-    birth_date = forms.DateField(_('Date of birth *'), help_text='dd/mm/aaaa')       
-    gender = forms.CharField(_('Gender *'), max_length=10, choices=TYPE_GENDER)    
+    type = forms.ChoiceField(label ='User type *', choices=TYPES_USERS, help_text='* Required fields')
+    name = forms.CharField(label='Name *', max_length=100)
+    email = forms.EmailField(label='Email', max_length=100)
+    cpf = forms.CharField(label='CPF *',max_length=14,help_text='ATENTION: just numbers')
+    phone = forms.CharField(label='Cellphone *',max_length=14, help_text='ATENTION: just numbers') 
+    birth_date = forms.DateField(label='Date of birth *', help_text='dd/mm/aaaa')       
+    gender = forms.ChoiceField(label='Gender *', choices=TYPE_GENDER)    
     password = forms.CharField(label= "Password *", widget=forms.PasswordInput)
         
     class Meta:
@@ -34,5 +34,5 @@ class SearchUserForm(forms.Form):
         ('COACH', 'Coach'),
         ('GUEST', 'Guest' ),
     )
-    name = forms.CharField(label='User name', choices=TYPES_USERS, required=False)
+    name = forms.ChoiceField(label='User name', choices=TYPES_USERS, required=False)
     type = forms.CharField(label='User type', required=False)

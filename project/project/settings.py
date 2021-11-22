@@ -28,7 +28,7 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-# AUTH_USER_MODEL = 'usuario.Usuario'
+AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
@@ -59,18 +59,9 @@ INSTALLED_APPS = [
     # 'orientacao',
     # 'submissao',
     # 'turma',
-    # 'usuario',
+    'users',
 ]
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

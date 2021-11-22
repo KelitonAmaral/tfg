@@ -87,13 +87,17 @@ class User(AbstractBaseUser):
 
     @property
     def get_first_name(self):
-        nomes = self.nome.split()
+        nomes = self.name.split()
         return nomes[0]
 
     @property
     def get_last_name(self):
         nomes = self.nome.split()
         return nomes[-1]
+    
+    @property
+    def get_user_type(self):
+        return self.type
     
     def save(self, *args, **kwargs):
         if not self.slug:

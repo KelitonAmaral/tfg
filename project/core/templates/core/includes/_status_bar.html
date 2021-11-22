@@ -6,13 +6,13 @@
       <div class="navbar-header">
         <br>
         <span class="label label-info">{% bootstrap_icon 'user' %}</span>
-        <span class="label label-default">{{ user.get_short_name|upper }}</span>
+        <span class="label label-default">{{ user.get_first_name|upper }}</span>
         <span class="label label-info">{% bootstrap_icon 'credit-card' %}</span>
-        <span class="label label-default">{{ user.get_tipo_display }}</span>
+        <span class="label label-default">{{ user.get_user_type }}</span>
         <span class="label label-info">{% bootstrap_icon 'bookmark' %}</span>
-        <span class="label label-default">Laboratório de Práticas da Computação: Fomento PROBIT UFN 2020-2021</span>
+        <span class="label label-default">Computer Science Undergraduation Final Project</span>
         <span class="label label-info">{% bootstrap_icon 'registration-mark' %}</span>
-        <span class="label label-default">Direitos Reservados</span>
+        <span class="label label-default">All rights reserved</span>
       </div>
     </div>
   </nav>

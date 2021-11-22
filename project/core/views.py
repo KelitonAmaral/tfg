@@ -6,12 +6,12 @@ from django.views.generic import RedirectView
 
 from utils.decorators import LoginRequiredMixin, StaffRequiredMixin
 
-# from usuario.models import Usuario
+from users.models import User
 
 
 class HomeRedirectView(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self, **kwargs):
-        if self.request.user.tipo == 'ADMINISTRATOR':
+        if self.request.user.type == 'ADMINISTRATOR':
             return reverse('home')
         # elif self.request.user.tipo == 'COORDENADOR':
         #     return reverse('home')

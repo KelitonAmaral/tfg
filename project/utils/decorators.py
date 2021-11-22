@@ -18,7 +18,7 @@ class StaffRequiredMixin(object):
     """
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.tipo == 'ADMINISTRATOR':
+        if not request.user.type == 'ADMINISTRATOR':
             messages.error(
                 request,
                 'You do not have permission to access this area or'
@@ -34,7 +34,7 @@ class SecretariaCoordenadorAdministradorRequiredMixin(object):
     """
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.tipo == 'COORDENADOR' and not request.user.tipo == 'ADMINISTRADOR' and not request.user.tipo == 'SECRETÁRIA':
+        if not request.user.type == 'COORDENADOR' and not request.user.type == 'ADMINISTRADOR' and not request.user.type == 'SECRETÁRIA':
             messages.error(
                 request,
                 'Você não tem permissão para acessar esta área ou'
