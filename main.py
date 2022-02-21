@@ -1,6 +1,6 @@
 import cv2
 
-from project.video_processing.video_processing import VideoProcessing
+from project.video_processing.lift import Lift
 
 # # print("hello world")
 
@@ -39,9 +39,15 @@ from project.video_processing.video_processing import VideoProcessing
 # VideoProcessing.open_file(r'project\upload\medias\hang-power-clean.avi')
 
 
-my_video = VideoProcessing(r'project\upload\medias\hang-power-clean.mp4')
+my_video = Lift(r'project\upload\medias\hang-power-clean.mp4')
 
-my_video.kcf_analyze_trajectory()
+my_video.trajectory()
+
+# print(my_video.trajectory)
+
+# my_video.kcf_analyze_trajectory()
+
+# my_video.show_trajectory()
 
 
 # cap = cv2.VideoCapture(r'project\upload\medias\hang-power-clean.mp4')
