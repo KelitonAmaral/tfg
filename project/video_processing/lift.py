@@ -53,8 +53,8 @@ class Lift:
             
             if ok:
                 (x, y, w, h) = [int(f) for f in bbox]
-                # cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2, 1)
-                cv2.line(frame, (x, y), (x + w, y + h), (0, 255, 0), 2, 1)
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2, 1)
+                # cv2.line(frame, (x, y), (x + w, y + h), (0, 255, 0), 2, 1)
                 # trajectory = [[x, y]]
                 trajectory.append([x, y])
                 # print(bbox)
