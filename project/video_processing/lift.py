@@ -72,7 +72,7 @@ class Lift:
 
         # Fecha todas as janelas
         cv2.destroyAllWindows()
-    
+        
         return trajectory
 
     # def trajectory(self):
@@ -130,37 +130,37 @@ class Lift:
     
     #     return trajectory
 
-    # def open_file(self):
-    #     '''
-    #     Method to play the video like a regular video player using OpenCV.
-    #     It will play the video at a faster rate, depending on the process power of the computer.
-    #     To play the video at a resonable pace, change the values in the sleep() method.
+    def open_file(self):
+        '''
+        Method to play the video like a regular video player using OpenCV.
+        It will play the video at a faster rate, depending on the process power of the computer.
+        To play the video at a resonable pace, change the values in the sleep() method.
 
-    #     Args:
-    #         self (class): reference to the current instance of the class
+        Args:
+            self (class): reference to the current instance of the class
 
-    #     Raises:
+        Raises:
 
-    #     Returns:
+        Returns:
 
-    #     '''   
+        '''   
         
-    #     try:
-    #         cap = cv2.VideoCapture(self.file_path)
-    #         fps = int(cap.get(cv2.CAP_PROP_FPS))
-    #     except:
-    #         print("Video file not found")
+        try:
+            cap = cv2.VideoCapture(self.file_path)
+            fps = int(cap.get(cv2.CAP_PROP_FPS))
+        except:
+            print("Video file not found")
 
-    #     while True:
-    #         ok, frame = cap.read()
-    #         if not ok:
-    #             break
-    #         # Change values in the sleep() method to change the pace of the video being played
-    #         time.sleep(0.5/fps)
-    #         cv2.imshow('Video', frame)
-    #         if cv2.waitKey(1) & 0XFF == 27: # Tecla 'ESC'
-    #             break
+        while True:
+            ok, frame = cap.read()
+            if not ok:
+                break
+            # Change values in the sleep() method to change the pace of the video being played
+            time.sleep(0.5/fps)
+            cv2.imshow('Video', frame)
+            if cv2.waitKey(1) & 0XFF == 27: # Tecla 'ESC'
+                break
 
-    #     cap.release()
+        cap.release()
 
-    #     cv2.destroyAllWindows()
+        cv2.destroyAllWindows()
