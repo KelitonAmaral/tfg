@@ -14,18 +14,18 @@ class Analysis:
         coordinates = [[i / sum(j) for i in j] for j in trajectory]
         return coordinates
     
-    # def reverse_y_elements(self, original_list):
-    #     x = []
-    #     y = []  
-    #     for a,b in original_list:
-    #         # print(a, b)
-    #         x.append(a)
-    #         y.append(b)
-    #     y.reverse()
-    #     # print(x)
-    #     # print(y)
-    #     new_list = list(map(list, zip(x, y)))
-    #     return new_list
+    def reverse_y_elements(self, original_list):
+        x = []
+        y = []  
+        for a,b in original_list:
+            # print(a, b)
+            x.append(a)
+            y.append(b)
+        y.reverse()
+        # print(x)
+        # print(y)
+        new_list = list(map(list, zip(x, y)))
+        return new_list
 
 
     # def normalize_list_numpy(self, trajectory):
@@ -58,8 +58,8 @@ class Analysis:
     def plot_graph(self, coordinates):
         x = []
         y = []
-        my_tuple = tuple(coordinates)
-        print(my_tuple)
+        # my_tuple = tuple(coordinates)
+        # print(my_tuple)
         for a,b in coordinates:
             # print(a, b)
             x.append(a)
