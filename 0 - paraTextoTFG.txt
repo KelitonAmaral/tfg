@@ -1,0 +1,44 @@
+Pendências:
+
+1) Um desafio encontrado no desenvolvimento do módulo de rastreio, foi justamente no momento da geração do
+    gráfico da trajetória da barra. Como já mencionado, foram utilizados os pacotes Python OpenCV (quais funções) 
+    e MatPlotLib (quais funções). Para o desenho ou a plotagem do gráfico, em geral, o OpenCV trabalha com 
+    conceito de coordenadas diferente do Plano Cartesiano. No OpenCV a imagem é representada como uma matriz e 
+    o elemento das linhas (que dá altura da imagem) cresce de cima para baixo, ou seja, a origem do eixo y fica
+    no canto superior esquerdo e a origem do eixo x, no canto inferior esquerdo. Completamente diferente do Plano 
+    Cartesiano, onde x e y têm usas origens no canto inferior esquerdo. 
+    Portanto, surge um problema na análise do vídeo e na plotagem do gráfico, pois quando a anilha e a barra sobem
+    o y diminui no OpenCV, enquanto no Plano Cartesiano ele aumenta.
+
+    Sabe-se que o Plano Cartesiano utilizado pelo MatPlotLib pode ser adaptado, isto é, é possível inverter o y.
+    Contudo, decidiu-se, por uma questão de usabilidade, montar o gráfico de acordo com o Plano Cartesiano tradicional,
+    uma vez que um usuário compreende melhor quando a altura sobe (somar), o y também sobe.
+
+2) Um ponto importante, é na fase em que o bounding box é criado e se inicia o processamento de
+   rastreio (tracking). Percebeu-se, em algumas situações, que durante o rastreio, o bounding box
+   perdia momentaneamente a região de interesse (no caso, a anilha) e com isso gerava ruído na lista
+   de pontos x e y do rastreio. Ou seja, havia na lista pontos x e y que não estavam na trilha do levantamento,
+   fazendo que o gráfico da trajetória da barra também ficasse com ruído, logo dificultando a interpretação.
+   Acredita-se que isso ocorre pela granularidade (nota de rodape) dos pixels do vídeo ou também pelas 
+   camadas utilizadas no vídeo (nota de rodapé).
+
+   Dessa forma, foram necessárias as seguintes adaptações ......
+
+
+3) colocar informações dos vídeos: tamanho, camadas, quantidade de pixels linha/coluna
+
+4) nos resultados, colocar os dois gráficos de trajetória da barra: i) do chines; ii) teu; Colorir no gráfico  
+e apontar no video (imagens)
+
+
+3) trabalhos futuros:
+    - como a proposta do trabalho contempla também uma solução Web, em arquitetura cliente-servidor,
+    o fluxo ou o passo de carregar um vídeo de um atleta referente a um exercício de levantamento de peso,
+    há a necessidade de projetar e implementar a funcionalidade de detecção da anilha de forma automatizada, 
+    ou seja, a criação do bounding box que define a região de interesse para o processamento de rastreio.
+
+    - tratamento da granularidade e o tratamento das camadas do vídeo ... (ideias ou sugestões a serem utilizadas)
+        - primeira solução de granularidade: a partir da lista de trajetória, identificar e retirar os pontos incoerentes;
+        - segunda solução de granularidade: é transformar o vídeo em slow motion ou já gravar em slow motion;
+        - terceira solução de granularidade: aumentar os recursos de hardware (RAM e Placa Gráfica), ou utilizar Cloud Computing como Google Collab
+n) 
