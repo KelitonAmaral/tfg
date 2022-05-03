@@ -22,7 +22,21 @@ Pendências:
    Acredita-se que isso ocorre pela granularidade (nota de rodape) dos pixels do vídeo ou também pelas 
    camadas utilizadas no vídeo (nota de rodapé).
 
-   Dessa forma, foram necessárias as seguintes adaptações ......
+   Dessa forma, foram testadas as seguintes adaptações ......
+
+   Diminuir a velocidade do vídeo analisado não diminuiu granularidade das linhas no gráfico
+
+   Desfoque (blur) utilizando a função cv2.GaussianBlur() e reescrevendo o vídeo com os frames desfocados também não resultou em
+   melhora da granularidade
+
+   Recriar o vídeo a cores com tons de cinza (grayscale)...
+
+   Aplicar detecção de contornos (edege detection) na anilha...
+
+   Como sugerido pelo artigo https://www.geeksforgeeks.org/circle-detection-using-opencv-python/
+   os três pré-processamentos anteriores (blur, grayscale, edge detection) são usados na pesquisa biomédica para
+   detecção de estruturas biológicas circulares como íris ou glóbulos brancos, então foram aplicadas as técnicas
+   simultaneamente para detectar a anilha e diminuir o problema da granularidade, com os seguintes resultados...
 
 
 3) colocar informações dos vídeos: tamanho, camadas, quantidade de pixels linha/coluna

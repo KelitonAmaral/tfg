@@ -10,6 +10,7 @@ from project.video_processing.analysis import Analysis
 
 # my_video = Lift(r'project\upload\medias\hang-power-clean.mp4')
 my_video = Lift(r'project\upload\medias\snatch.mp4')
+# my_video = Lift(r'project\upload\medias\snatch_slow.mp4')
 
 my_trajectory = my_video.find_trajectory()
 

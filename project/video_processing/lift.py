@@ -41,10 +41,6 @@ class Lift:
         Coordinates in OpenCV               (y, x)
         Coordinates in Cartesian Plane      (x, y)
 
-        Thats why when we use trajectory.append() to create a list of cartesian coordinates for the
-        center of the bounding box in each frame, we append the row first, then column. That will ensure 
-        matplolib (that uses cartesian plane) represents each point better.
-
         Args:
             self (class): reference to the current instance of the class
 
@@ -61,6 +57,15 @@ class Lift:
         except:
             print("Video file not found")
         
+        # Now we need to know the height and width of the VideoCaputre object we created.
+        # We can use the function get() passing the id of the property as argument. 
+        # See doc: https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html 
+        video_width = int(cap.get(3))
+        video_height = int(cap.get(4))
+        # # # define codec and create VideoWriter object
+        # out = cv2.VideoWriter('out_videos/marketing_out.avi', cv2.VideoWriter_fourcc('M','J','P','G'), 30, (frame_width, frame_height))
+        print(video_height)
+        print(video_width)
         # Create CSRT tracker, bounding box and trajectory list
         tracker = cv2.TrackerCSRT_create()
         ok, frame = cap.read()
@@ -85,22 +90,38 @@ class Lift:
         # The shape function returns a tuple, therefore we can access
         # each value individualy by index. Remember: height comes first
         # then width 
-        video_height = frame.shape[0]
-        video_width = frame.shape[1]
-        video_channels = frame.shape[2]
+        # video_height = frame.shape[0]
+        # video_width = frame.shape[1]
+        # video_channels = frame.shape[2]
 
-        print(video_height)
-        print(video_width)
-        print(video_channels)
+        # print(video_height)
+        # print(video_width)
+        # print(video_channels)
 
         while True:
             ok, frame = cap.read()
             # print(frame)
             if not ok:
                 break
+
+            # add gaussian blurring to frame
+            frame_blurred = cv2.GaussianBlur(frame, (5, 5), 0)
+            
+            # Convert to gray scale
+            frame = cv2.cvtColor(frame_blurred, cv2.COLOR_BGR2GRAY)
+            
+            # save video frame
+            # out.write(frame)
+            
             ok, bbox = tracker.update(frame)
             
             if ok:
+                # # Convert to gray scale
+                # frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                # # add gaussian blurring to frame
+                # frame = cv2.GaussianBlur(frame, (5, 5), 0)
+                # # save video frame
+                # out.write(frame)
                 (x, y, bbox_w, bbox_h) = [int(f) for f in bbox]
                 # print("(x, y):({}, {}) - (w, h): ({}, {})".format(x, y, w, h))
                 cv2.rectangle(frame, (x, y), (x + bbox_w, y + bbox_h), (0, 255, 0), 2, 1)
