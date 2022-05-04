@@ -55,4 +55,12 @@ e apontar no video (imagens)
         - primeira solução de granularidade: a partir da lista de trajetória, identificar e retirar os pontos incoerentes;
         - segunda solução de granularidade: é transformar o vídeo em slow motion ou já gravar em slow motion;
         - terceira solução de granularidade: aumentar os recursos de hardware (RAM e Placa Gráfica), ou utilizar Cloud Computing como Google Collab
+    
+    - Como detectar a anilha do vídeo carregado no portal web
+
+4) Requisistos do vídeo a ser carregado:
+    - Colocar no texto o formato do vídeo necessário para o carregamento
+    - Ângulo da câmera, distância do atleta etc
+    
+    - Treinar um algoritmo para reconhecer a anilha...
 n) 
