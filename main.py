@@ -1,45 +1,26 @@
-import cv2
-import numpy as np
+from athlete import Athlete
 from project.video_processing.lift import Lift
 from project.video_processing.analysis import Analysis
 
+# New instance of Athlete class. 
+# It takes weight, height and age as contructor parameters
+new_athlete = Athlete(98, 180, 36)
 
+# Console prompt to input the weight in kg the athlete lift in the video
+weight = int(input("Digite o peso em kg levantado pelo atleta: "))
 
+# New instance of Lift class.
+# It takes the path to the video file and weight (kg) lifted
+new_lift = Lift(r'project\upload\medias\1080_snatch_82.mp4', weight)
 
+my_trajectory = new_lift.find_trajectory()
 
+analysis = Analysis()
 
-# my_video = Lift(r'project\upload\medias\hang-power-clean.mp4')
-my_video = Lift(r'project\upload\medias\snatch.mp4')
-# my_video = Lift(r'project\upload\medias\snatch_slow.mp4')
+analysis.plot_graph(my_trajectory)
 
-my_trajectory = my_video.find_trajectory()
+# Call the method to calculate relative strength
+relative_strength_index = analysis.calculate_relative_strength(new_athlete.body_height, new_lift.bar_weight)
 
-# print(my_trajectory)
-
-# print("Trajetória original: ")
-# print(len(my_trajectory))
-# x = 0
-# i = 0
-# tamanho = len(my_trajectory)
-# while i < tamanho:
-#     if i % 3 == 0:
-#         x += 1
-#         # print(i, " ", my_trajectory[i])
-#         del my_trajectory[i]
-#         tamanho = len(my_trajectory)
-#     i += 1 
-
-# for i in range(20):
-    # del my_trajectory[0]
-
-# print("Contador: ", x)
-# print(len(my_trajectory))
-
-
-graph = Analysis()
-
-# trajectory = graph.reverse_y_elements(my_trajectory)
-
-# print("Trajetória com y invertido: ")
-print(my_trajectory)
-graph.plot_graph(my_trajectory)
+# Print the resulting relative strength index
+print("Índice de força relativa do atleta: ", relative_strength_index)
