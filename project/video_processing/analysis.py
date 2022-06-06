@@ -20,7 +20,3 @@ class Analysis:
 
     def calculate_relative_strength(self, body_weight, bar_weight):
         return round(bar_weight / body_weight, 2)
-
-    # def normalize_list(self, trajectory):
-    #     coordinates = [[i / sum(j) for i in j] for j in trajectory]
-    #     return coordinates

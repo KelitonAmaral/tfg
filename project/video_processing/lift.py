@@ -45,25 +45,22 @@ class Lift:
             ok, frame = cap.read()
             if not ok:
                 break
-            
             # Add gaussian blurring to frame
             frame_blurred = cv2.GaussianBlur(frame, (5, 5), 0)
-            
             # Convert to gray scale
             frame = cv2.cvtColor(frame_blurred, cv2.COLOR_BGR2GRAY)
-            
-            ok, bbox = tracker.update(frame)
-            
+            ok, bbox = tracker.update(frame)            
             if ok:
                 (x, y, bbox_w, bbox_h) = [int(f) for f in bbox]
-                cv2.rectangle(frame, (x, y), (x + bbox_w, y + bbox_h), (0, 255, 0), 2, 1)
+                # Draw a box to follow the object being tracked
+                cv2.rectangle(frame, (x, y), (x + bbox_w, y + bbox_h), 
+                (0, 255, 0), 2, 1)
                 new_y = video_height - y
-
                 trajectory.append([(x+bbox_w)/2, new_y+bbox_h/2])
-
             else:
-                cv2.putText(frame, "Error", (100, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-
+                cv2.putText(frame, "Error", (100, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, 
+                (0, 0, 255), 2)
+            
             cv2.imshow('Video', frame)
             # 'ESC' key to stop
             if cv2.waitKey(1) & 0XFF == 27:
@@ -74,23 +71,6 @@ class Lift:
         cv2.destroyAllWindows()
 
         return trajectory
-
-    # def resize_video(self):
-    #     cap = cv2.VideoCapture(self.file_path)
-    #     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    #     out = cv2.VideoWriter('video_snatch.mov',fourcc, 15, (640,480))
-
-    #     while True:
-    #         ret, frame = cap.read()
-    #         if ret == True:
-    #             b = cv2.resize(frame,(640,480),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)
-    #             out.write(b)
-    #         else:
-    #             break
-    #     # Release the VideoCapture object and VideoWriter object
-    #     cap.release()
-    #     out.release()
-    #     cv2.destroyAllWindows()
 
 
     
